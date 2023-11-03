@@ -66,7 +66,7 @@ Public Class SearchForm1
             ' Check if userNo is not empty (to avoid SQL injection)
             If Not String.IsNullOrEmpty(userNo) Then
                 ' Assuming you have a database connection, you can execute a SQL query to delete the row and its data
-                Dim connectionString As String = "Data Source=ALIFAMRAN-MBP;Initial Catalog=userForm;Persist Security Info=True;User ID=sa;Password=P@$$w0rd"
+                Dim connectionString As String = "Your Connection String Name"
 
                 Using connection As New SqlConnection(connectionString)
                     connection.Open()
@@ -89,7 +89,7 @@ Public Class SearchForm1
 
     Public Sub DeleteRowAndData(ByVal userNo As String)
         ' Define your connection string
-        Dim connectionString As String = "Data Source=ALIFAMRAN-MBP;Initial Catalog=userForm;Persist Security Info=True;User ID=sa;Password=P@$$w0rd"
+        Dim connectionString As String = "Your Connection String Name"
 
         ' Create a SQL connection
         Using connection As New SqlConnection(connectionString)
@@ -112,7 +112,7 @@ Public Class SearchForm1
 
     Private Sub DisplayData()
         ' Define your database connection string
-        Dim connectionString As String = "Data Source=ALIFAMRAN-MBP;Initial Catalog=userForm;Persist Security Info=True;User ID=sa;Password=P@$$w0rd"
+        Dim connectionString As String = "Your Connection String Name"
 
         ' Create a SQL query to fetch the data you need
         Dim query As String = "SELECT TF.Name, TF.IC, TF.Description, TF.DateOfBirth, TF.Nationality, TF.Gender, TF.Age, TF.UserNo, " &
@@ -230,112 +230,3 @@ Public Class SearchForm1
 
 
 End Class
-
-
-'Protected Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
-'    ' Define your database connection string
-'    Dim connectionString As String = "Data Source=ALIFAMRAN-MBP;Initial Catalog=userForm;Persist Security Info=True;User ID=sa;Password=P@$$w0rd"
-
-'    ' Create a SQL query to fetch the data you need, including the gender filter
-'    Dim query As String = "SELECT TF.Name, TF.IC, TF.Description, TF.DateOfBirth, TF.Nationality, TF.Gender, TF.Age, TF.UserNo, " &
-'                    "VF.VehicleNo, VF.Colour, VF.Brand, VF.Model, VF.ImageURL " &
-'                    "FROM TableForm TF " &
-'                    "LEFT JOIN VehicleForm VF ON TF.UserNo = VF.UserNo "
-
-'    ' Check if a gender has been selected; if yes, add the gender filter
-'    If listGender.SelectedValue <> "" Then
-'        query &= "WHERE TF.Gender = @Gender "
-'    End If
-
-'    ' Create a SqlConnection and a SqlCommand
-'    Using connection As New SqlConnection(connectionString)
-'        Using cmd As New SqlCommand(query, connection)
-'            Try
-'                ' Open the database connection
-'                connection.Open()
-
-'                ' Set the parameter value for the gender filter based on the selected RadioButtonList
-'                If listGender.SelectedValue <> "" Then
-'                    cmd.Parameters.AddWithValue("@Gender", listGender.SelectedValue)
-'                End If
-
-'                ' Execute the SQL query and retrieve the data
-'                Dim reader As SqlDataReader = cmd.ExecuteReader()
-
-'                ' Create a HashSet to keep track of unique UserNo values
-'                Dim uniqueUserNos As New HashSet(Of String)()
-
-
-'                Dim counter As Integer = 1 ' Initialize a counter
-
-'                While reader.Read()
-'                    Dim row As New TableRow()
-'                    Dim userNo As String = reader("UserNo").ToString()
-
-'                    ' Check if this UserNo has already been added to the table
-'                    If Not uniqueUserNos.Contains(userNo) Then
-
-'                        ' Add the auto-generated number as the first cell
-'                        row.Cells.Add(New TableCell() With {.Text = counter.ToString()})
-'                        counter += 1 ' Increment the counter for the next row
-
-'                        ' Add the UserNo (hidden) as the second cell
-'                        Dim userNoCell As New TableCell()
-'                        userNoCell.Text = reader("UserNo").ToString()
-'                        userNoCell.Style("display") = "none"
-'                        row.Cells.Add(userNoCell)
-
-'                        ' Add the other cells with data
-'                        row.Cells.Add(New TableCell() With {.Text = reader("Name").ToString()})
-'                        row.Cells.Add(New TableCell() With {.Text = reader("IC").ToString()})
-'                        row.Cells.Add(New TableCell() With {.Text = reader("Description").ToString()})
-'                        row.Cells.Add(New TableCell() With {.Text = reader("DateOfBirth").ToString()})
-'                        row.Cells.Add(New TableCell() With {.Text = reader("Nationality").ToString()})
-'                        row.Cells.Add(New TableCell() With {.Text = reader("Gender").ToString()})
-'                        row.Cells.Add(New TableCell() With {.Text = reader("Age").ToString()})
-
-'                        Dim vehicleNocell As New TableCell()
-'                        vehicleNocell.Text = reader("VehicleNo").ToString()
-'                        vehicleNocell.Style("display") = "none"
-'                        row.Cells.Add(vehicleNocell)
-
-'                        Dim colourcell As New TableCell()
-'                        colourcell.Text = reader("Colour").ToString()
-'                        colourcell.Style("display") = "none"
-'                        row.Cells.Add(colourcell)
-
-'                        Dim brandcell As New TableCell()
-'                        brandcell.Text = reader("Brand").ToString()
-'                        brandcell.Style("display") = "none"
-'                        row.Cells.Add(brandcell)
-
-'                        Dim modelcell As New TableCell()
-'                        modelcell.Text = reader("Model").ToString()
-'                        modelcell.Style("display") = "none"
-'                        row.Cells.Add(modelcell)
-
-'                        Dim imageURLcell As New TableCell()
-'                        imageURLcell.Text = reader("ImageURL").ToString()
-'                        imageURLcell.Style("display") = "none"
-'                        row.Cells.Add(imageURLcell)
-
-'                        tblInfo.Rows.Add(row)
-
-'                        ' Add the UserNo to the HashSet to prevent duplication
-'                        uniqueUserNos.Add(userNo)
-'                    End If
-'                End While
-
-'                ' Close the database connection and the reader
-'                reader.Close()
-'            Catch ex As Exception
-'                ' Handle any exceptions that may occur during SQL query execution
-'                ' For debugging, you can print or log the exception details
-'                Response.Write("Error: " & ex.Message)
-'            Finally
-'                ' Ensure the database connection is closed
-'                connection.Close()
-'            End Try
-'        End Using
-'    End Using
-'End Sub
