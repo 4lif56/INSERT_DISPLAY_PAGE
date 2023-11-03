@@ -10,7 +10,7 @@ Namespace Controllers
 
         ' GET: api/Vehicle/5
         Public Function GetVehicles(ByVal id As String) As List(Of Vehicle)
-            Dim connectionString As String = "Data Source=ALIFAMRAN-MBP;Initial Catalog=userForm;Persist Security Info=True;User ID=sa;Password=P@$$w0rd"
+            Dim connectionString As String = "Your Connection String Name Here"
             Dim vehicles As New List(Of Vehicle)()
 
             Using connection As New SqlConnection(connectionString)
@@ -42,7 +42,7 @@ Namespace Controllers
 
         ' POST: api/Vehicle
         Public Sub PostVehicle(ByVal id As String, <FromBody()> ByVal vehicle As Vehicle)
-            Dim connectionString As String = "Data Source=ALIFAMRAN-MBP;Initial Catalog=userForm;Persist Security Info=True;User ID=sa;Password=P@$$w0rd"
+            Dim connectionString As String = "Your Connection String Name Here"
 
             Using connection As New SqlConnection(connectionString)
                 connection.Open()
@@ -65,7 +65,7 @@ Namespace Controllers
 
         ' PUT: api/Vehicle/5
         Public Sub PutVehicle(ByVal id As String, <FromBody()> ByVal updatedVehicle As Vehicle)
-            Dim connectionString As String = "Data Source=ALIFAMRAN-MBP;Initial Catalog=userForm;Persist Security Info=True;User ID=sa;Password=P@$$w0rd"
+            Dim connectionString As String = "Your Connection String Name Here"
 
             Using connection As New SqlConnection(connectionString)
                 connection.Open()
@@ -94,7 +94,7 @@ Namespace Controllers
 
         ' DELETE: api/Vehicle/5
         Public Sub DeleteVehicle(ByVal userId As String, ByVal vehicleNo As String)
-            Dim connectionString As String = "Data Source=ALIFAMRAN-MBP;Initial Catalog=userForm;Persist Security Info=True;User ID=sa;Password=P@$$w0rd"
+            Dim connectionString As String = "Your Connection String Name Here"
 
             Using connection As New SqlConnection(connectionString)
                 connection.Open()
