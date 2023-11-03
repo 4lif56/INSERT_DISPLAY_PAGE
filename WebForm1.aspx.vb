@@ -8,7 +8,7 @@ Imports System.IO
 
 Public Class WebForm1
     Inherits System.Web.UI.Page
-    Dim connectionString As String = "Data Source=ALIFAMRAN-MBP;Initial Catalog=userForm;Persist Security Info=True;User ID=sa;Password=P@$$w0rd"
+    Dim connectionString As String = "Your Connection String Name"
     Private vehicleDt As DataTable
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
@@ -103,7 +103,7 @@ Public Class WebForm1
 
     Private Sub PopulateVehicleData(ByVal userNo As String)
         ' Define your database connection string
-        Dim connectionString As String = "Data Source=ALIFAMRAN-MBP;Initial Catalog=userForm;Persist Security Info=True;User ID=sa;Password=P@$$w0rd"
+        Dim connectionString As String = "Your Connection String Name"
 
         ' Create a SQL query to fetch the vehicle data for the specified userNo
         Dim query As String = "SELECT VehicleNo, Colour, Brand, Model, ImageURL FROM VehicleForm WHERE UserNo = @UserNo"
@@ -632,7 +632,7 @@ Protected Sub DoB_TextChanged(sender As Object, e As EventArgs) Handles txtDob.T
 
 
     Private Function GetVehicleData(userNo As String) As DataTable
-        Dim connectionString As String = "Data Source=ALIFAMRAN-MBP;Initial Catalog=userForm;Persist Security Info=True;User ID=sa;Password=P@$$w0rd"
+        Dim connectionString As String = "Your Connection String Name"
 
         ' Create a DataTable to store the vehicle data
         Dim vehicleData As New DataTable()
